@@ -1,0 +1,60 @@
+create database universitymanagement;
+use universitymanagement;
+
+-- 1. Login Table
+create table login(username varchar(30), password varchar(30));
+insert into login values('techcoder', '123456');
+
+-- 2. Teacher Table
+create table teacher(
+    name varchar(40), fname varchar(40), empID varchar(40), 
+    dob varchar(40), address varchar(40), phone varchar(40), 
+    email varchar(40), class_x varchar(40), class_XII varchar(40), 
+    aadhar varchar(40), education varchar(40), department varchar(40)
+);
+
+-- 3. Student Table
+create table student(
+    name varchar(40), fname varchar(40), rollno varchar(40), 
+    dob varchar(40), address varchar(40), phone varchar(40), 
+    email varchar(40), class_x varchar(40), class_XII varchar(40), 
+    aadhar varchar(40), course varchar(40), branch varchar(40)
+);
+
+-- 4. Leave Tables
+create table studentleave(rollno varchar(20), date varchar(20), Time varchar(20));
+create table teacherleave(empID varchar(20), date varchar(20), Time varchar(20));
+
+-- 5. Examination Tables
+create table subject(
+    rollno varchar(20), semester varchar(20), 
+    subj1 varchar(50), subj2 varchar(50), subj3 varchar(50), 
+    subj4 varchar(50), subj5 varchar(50)
+);
+
+create table marks(
+    rollno varchar(20), semester varchar(20), 
+    mrk1 varchar(50), mrk2 varchar(50), mrk3 varchar(50), 
+    mrk4 varchar(50), mrk5 varchar(50)
+);
+
+-- 6. Fee Structure Table (Reference)
+create table fee(
+    course varchar(20), semester1 varchar(20), semester2 varchar(20), 
+    semester3 varchar(20), semester4 varchar(20), semester5 varchar(20), 
+    semester6 varchar(20), semester7 varchar(20), semester8 varchar(20)
+);
+
+insert into fee values("B.Tech", "49000", "43000","43000","43000","43000","43000","43000","43000");
+insert into fee values("BCA", "39000", "34000","34000","34000","34000","34000","","");
+
+-- 7. Student Fee Paid Table (This is what your Receipt uses)
+create table feecollege(
+    rollno varchar(20), course varchar(20), branch varchar(20), 
+    semester varchar(20), total varchar(20)
+);
+
+INSERT INTO feecollege (rollno, course, branch, semester, total) 
+VALUES ('14096535', 'B.Tech', 'Computer Science', 'semester1', '49000');
+
+SELECT * FROM feecollege WHERE rollno = '14096535';
